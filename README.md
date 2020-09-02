@@ -37,12 +37,12 @@
 
 ### Request URL
 
-Para significados:  
-https://significado.herokuapp.com/meanings/livro  
+Para significados:
+https://significado.herokuapp.com/meanings/livro
 ou simplesmente: https://significado.herokuapp.com/livro
 
-Outras informações:  
-sinônimos: https://significado.herokuapp.com/synonyms/livro  
+Outras informações:
+sinônimos: https://significado.herokuapp.com/synonyms/livro
 separação silábica: https://significado.herokuapp.com/syllables/livro
 
 ### Response
