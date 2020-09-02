@@ -3,19 +3,18 @@ const cheerio = require('cheerio');
 const sanitizeWord = require('./utils/sanitizeWord');
 
 module.exports = async (req, res) => {
-
-  const { word } = req.params;
+  const {word} = req.params;
   const sanitizedWord = sanitizeWord(word);
 
   try {
 
-    const { data: dicioHTML } = await axios.get(`https://dicio.com.br/${sanitizedWord}`);
+    const {data : dicioHTML} =
+        await axios.get(`https://dicio.com.br/${sanitizedWord}`);
 
     const $ = cheerio.load(dicioHTML);
 
     const synonyms = [];
     $('a', '.sinonimos').each((_, element) => {
-
       const text = $(element).text();
 
       if (text)
@@ -26,6 +25,6 @@ module.exports = async (req, res) => {
 
   } catch (err) {
     console.log(err);
-    res.status(400).json({ error: err.message })
+    res.status(400).json({error : err.message})
   }
 }

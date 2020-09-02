@@ -3,13 +3,13 @@ const cheerio = require('cheerio');
 const sanitizeWord = require('./utils/sanitizeWord');
 
 module.exports = async (req, res) => {
-
-  const { word } = req.params;
+  const {word} = req.params;
   const sanitizedWord = sanitizeWord(word);
 
   try {
 
-    const { data: dicioHTML } = await axios.get(`https://dicio.com.br/${sanitizedWord}`);
+    const {data : dicioHTML} =
+        await axios.get(`https://dicio.com.br/${sanitizedWord}`);
 
     const $ = cheerio.load(dicioHTML);
 
@@ -19,15 +19,14 @@ module.exports = async (req, res) => {
       throw `Could not parse silabic matches from "${additionalText}"`;
 
     const syllablesInfo = {
-    syllablesText: syllabicMatches[0].trim(),
-    syllablesCount: syllabicMatches[0].split('-').length
+      syllablesText : syllabicMatches[0].trim(),
+      syllablesCount : syllabicMatches[0].split('-').length
     }
 
-    res.json(syllablesInfo);
-
+                          res.json(syllablesInfo);
 
   } catch (err) {
     console.log(err);
-    res.status(400).json({ error: err.message })
+    res.status(400).json({error : err.message})
   }
 }

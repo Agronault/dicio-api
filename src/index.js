@@ -11,5 +11,4 @@ app.get('/meanings/:word', meanings);
 app.get('/synonyms/:word', synonyms);
 app.get('/syllables/:word', syllables);
 
-
 app.listen(process.env.PORT || 3333);
